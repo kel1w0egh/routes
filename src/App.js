@@ -1,25 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
+import CityInfo from './components/CityInfo';
+import SightInfo from "./components/SightInfo";
+import AllSightInfo from "./components/AllSightInfo";
+import Gallery from "./components/Gallery";
+import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Router>
+            <div>
+                <ul>
+                    <li>
+                        <Link to={"/"}>Информация о городе</Link>
+                    </li>
+                    <li>
+                        <Link to={"/sight"}>Достопримечательность</Link>
+                    </li>
+                    <li>
+                        <Link to={"/all-sight"}>Достопримечательности</Link>
+                    </li>
+                    <li>
+                        <Link to={"/gallery"}>Галерея</Link>
+                    </li>
+                </ul>
+            </div>
+            <Switch>
+                <Route exact path={"/"}>
+                    <CityInfo />
+                </Route>
+                <Route path={"/sight"}>
+                    <SightInfo />
+                </Route>
+                <Route path={"/all-sight"}>
+                    <AllSightInfo />
+                </Route>
+                <Route path={"/gallery/:id"}>
+                    <Gallery />
+                </Route>
+                <Route path={"/gallery"}>
+                    <Gallery />
+                </Route>
+            </Switch>
+        </Router>
     </div>
   );
 }
-
-export default App;

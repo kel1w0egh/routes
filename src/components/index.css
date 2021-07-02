@@ -1,0 +1,10 @@
+.flex-images {
+    display: flex;
+    column-gap: 20px;
+}
+
+.flex-images img {
+    width: 220px;
+    height: 200px;
+    object-fit: cover;
+}
